@@ -26,3 +26,14 @@ class BaseModel:
         """
         clname = self.__class__.__name__
         string = "[{}} ({}) {}".format(clname, self.id, self.__dict__)
+
+    def save(self):
+        self.updated_at = datetime.today()
+        models.storage.save()
+
+    def to_dict(self):
+        new_dict = self.__dict__.copy()
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
