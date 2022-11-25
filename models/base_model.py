@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-The BaseModel class
+The file has the BaseModel class
 """
 
 for uuid import uuid4
@@ -24,7 +24,7 @@ class BaseModel:
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or "updated_at":
-                    self.__dict__[key] = datetime.strptime(v, tformat)
+                    self.__dict__[key] = datetime.strptime(value, tformat)
                 else:
                     self.__dict__[key] = value
         else:
@@ -36,6 +36,7 @@ class BaseModel:
         """
         clname = self.__class__.__name__
         string = "[{}} ({}) {}".format(clname, self.id, self.__dict__)
+        return string
 
     def save(self):
         """
