@@ -3,7 +3,8 @@
 The file has the BaseModel class
 """
 
-for uuid import uuid4
+import models
+from uuid import uuid4
 from datetime import datetime
 
 
